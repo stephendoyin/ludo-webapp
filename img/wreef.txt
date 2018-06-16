@@ -1,0 +1,11 @@
+var newPointX, newPointY, spotterX, spotterY, spotterXY;
+for(i=0; i<blueSeedPath2.length, i++){
+   bluePath = document.getElementById(blueSeedPath2[i]);
+   if(bluePath.src === blue_seed.png){
+      newPointX = document.getElementById(blueSeedPath2[i + x]);
+      spotterX = document.getElementById(blueSeedPath2[i + x] + "a");
+      spotterX.setAttribute("src","spotter.gif");
+spotterY = document.getElementById(blueSeedPath2[i + x] + "a");
+      
+}
+}
