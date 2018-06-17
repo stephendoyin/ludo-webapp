@@ -9,31 +9,26 @@ body{
     background-color: #FDF7F8;
 }
 
-.row{
-    max-width: 90%;
-    margin: 0 auto;
+.container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.clearfix{zoom: 1}
-.clearfix::after{
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
+.container {
+    display: grid;
+    grid-template-columns: 60vw 40vw;
+    grid-template-rows: 100vh;
 }
 
 table {
     background: url("img/LUDO_BOARD.GIF") no-repeat, #fff;
-    background-size: 600px 601px;
+    background-size: 37.5rem 37.5625rem;
     width: fit-content;
-}
-
-
-table {
     border: 0px solid black; 
     border-collapse: collapse;
 }
+
 
 .ludo-title{
     font-family: 'Luckiest Guy', cursive;
@@ -44,8 +39,8 @@ table {
 
 td {
     border: 4px solid rgba(0,0,0,0);
-    width: 46px;
-    height: 46.46px;
+    width: 2.875rem;
+    height: 2.90375rem;
     overflow: hidden;
     position: relative;
     float: none;
