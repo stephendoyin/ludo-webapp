@@ -14,9 +14,10 @@ $(document).ready(function(){
 
     //get the a random number
     function rollDice() {
-        currentDiceNumber = 4;//Math.floor((Math.random() * 6) + 1);
+        currentDiceNumber = 6;//Math.floor((Math.random() * 6) + 1);
         console.log(currentDiceNumber);
         diceFace.src = allDiceFaces[currentDiceNumber];
+        setSeedOnBoard();
         playerTurn();
     }
 
@@ -33,14 +34,14 @@ $(document).ready(function(){
     var greenSeedPath = [6, 7, 13, 14, 12, 17, 20, 23, 31, 32, 33, 34, 35, 36, 49, 62, 61, 60, 59, 58, 57, 65, 68, 71, 76, 83, 82, 81, 74, 69, 66, 63, 55, 54, 53, 52, 51, 50, 37, 24, 25, 26, 27, 28, 29, 21, 18, 15, 10, 3, 4, 11, 16, 19, 22, 30, 43, 100, 200, 300, 400, 500, 600];
 
     //initial positions for blue-seed
-    var bluePos1 = blueSeedPath[7];
+    var bluePos1 = blueSeedPath[0];
     var bluePos2 = blueSeedPath[1];
     var bluePos3 = blueSeedPath[2];
     var bluePos4 = blueSeedPath[3];
 
 
     //initial positions for red-seed
-    var redPos1 = redSeedPath[0];
+    var redPos1 = redSeedPath[10];
     var redPos2 = redSeedPath[1];
     var redPos3 = redSeedPath[2];
     var redPos4 = redSeedPath[3];
@@ -206,7 +207,39 @@ $(document).ready(function(){
         }
     }
 
+    function blueMvAnimation(i, seed, rmv){
+        
+        setTimeout(function(){
+            console.log(seed)
+            $("."+seed).addClass("blue-seed");
+            $("."+rmv).removeClass("blue-seed");
+            if(bluePos1 === rmv || bluePos2 === rmv || bluePos3 === rmv || bluePos4 === rmv)
+            $("."+rmv).addClass("blue-seed");
+        }, 400 * i);
+    }
 
+    function redMvAnimation(i, seed, rmv){
+        
+        setTimeout(function(){
+            console.log(seed)
+            $("."+seed).addClass("red-seed");
+            $("."+rmv).removeClass("red-seed");
+            if(redPos1 === rmv || redPos2 === rmv || redPos3 === rmv || redPos4 === rmv)
+            $("."+rmv).addClass("red-seed");
+        }, 400 * i);
+        
+    }
+
+    // function redMvAnimation(i, seed, rmv){
+        
+    //     setTimeout(function(){
+    //         console.log(seed)
+    //         $("."+seed).addClass("red-seed");
+    //         $("."+rmv).removeClass("red-seed");
+    //         if(redPos1 === rmv || redPos2 === rmv || redPos3 === rmv || redPos4 === rmv)
+    //         $("."+rmv).addClass("red-seed");
+    //     }, 400 * i);
+    // }
 
     //click event that uses jquery delegation
     $("table").on("click", "td", function (event) {
@@ -219,49 +252,79 @@ $(document).ready(function(){
                 if (target.parent().hasClass("blue-seed")) {
                     switch (targetClass) {
                         case bluePos1:
-                            bluePlay = currentDiceNumber;
                             if (blueSeedPath[k] === bluePos1){
-                                for(var x = 0; x < currentDiceNumber; x++){
-                                    bluePos1 = blueSeedPath[k += 1];
-                                    setTimeout(function(){
-                                        beast();
-                                    }, 1000)
-                                    function beast(){
-                                        $("."+bluePos1).addClass('blue-seed');
-                                    }
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = bluePos1;
+                                    bluePos1 = blueSeedPath[k+=1];
+                                    blueMvAnimation(i, bluePos1, reduction);
                                 }
                             }
                             break;
                         case bluePos2:
-                            if (blueSeedPath[k] === bluePos2)
-                                bluePos2 = blueSeedPath[k + currentDiceNumber];
+                            if (blueSeedPath[k] === bluePos2){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = bluePos2;
+                                    bluePos2 = blueSeedPath[k+=1];
+                                    blueMvAnimation(i, bluePos2, reduction);
+                                }
+                            }
                             break;
                         case bluePos3:
-                            if (blueSeedPath[k] === bluePos3)
-                                bluePos3 = blueSeedPath[k + currentDiceNumber];
+                            if (blueSeedPath[k] === bluePos3){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = bluePos3;
+                                    bluePos3 = blueSeedPath[k+=1];
+                                    blueMvAnimation(i, bluePos3, reduction);
+                                }
+                            }
                             break;
                         case bluePos4:
-                            if (blueSeedPath[k] === bluePos4)
-                                bluePos4 = blueSeedPath[k + currentDiceNumber];
+                            if (blueSeedPath[k] === bluePos4){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = bluePos4;
+                                    bluePos4 = blueSeedPath[k+=1];
+                                    blueMvAnimation(i, bluePos4, reduction);
+                                }
+                            }
                             break;
                     }
                 } else if (target.parent().hasClass("red-seed")) {
                     switch (targetClass) {
                         case redPos1:
-                            if (redSeedPath[k] === redPos1)
-                                redPos1 = redSeedPath[k + currentDiceNumber];
+                            if (redSeedPath[k] === redPos1){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = redPos1;
+                                    redPos1 = redSeedPath[k+=1];
+                                    redMvAnimation(i, redPos1, reduction);
+                                }
+                            }
                             break;
                         case redPos2:
-                            if (redSeedPath[k] === redPos2)
-                                redPos2 = redSeedPath[k + currentDiceNumber];
+                        if (redSeedPath[k] === redPos2){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = redPos2;
+                                    redPos2 = redSeedPath[k+=1];
+                                    redMvAnimation(i, redPos2, reduction);
+                                }
+                            }
                             break;
                         case redPos3:
-                            if (redSeedPath[k] === redPos3)
-                                redPos3 = redSeedPath[k + currentDiceNumber];
+                            if (redSeedPath[k] === redPos3){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = redPos3;
+                                    redPos3 = redSeedPath[k+=1];
+                                    redMvAnimation(i, redPos3, reduction);
+                                }
+                            }
                             break;
                         case redPos4:
-                            if (redSeedPath[k] === redPos4)
-                                redPos4 = redSeedPath[k + currentDiceNumber];
+                            if (redSeedPath[k] === redPos4){
+                                for(let i = 1; i <= currentDiceNumber; i++){
+                                    let reduction = redPos4;
+                                    redPos4 = redSeedPath[k+=1];
+                                    redMvAnimation(i, redPos4, reduction);
+                                }
+                            }
                             break;
                     }
                 } else if (target.parent().hasClass("yellow-seed")) {
@@ -363,46 +426,78 @@ $(document).ready(function(){
 
             //if seed has 6 and it's at opening position, call out (for blue)
             if (target.parent().hasClass("1")) {
+                target.parent().removeClass("blue-seed");
                 bluePos1 = 25;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("2")) {
+                target.parent().removeClass("blue-seed");
                 bluePos2 = 25;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("8")) {
+                target.parent().removeClass("blue-seed");
                 bluePos3 = 25;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("9")) {
+                target.parent().removeClass("blue-seed");
                 bluePos4 = 25;
+                setSeedOnBoard();
             }
 
             //if seed has 6 and it's at opening position, call out (for red seed)
             if (target.parent().hasClass("85")) {
+                target.parent().removeClass("red-seed");
                 redPos1 = 61;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("84")) {
+                target.parent().removeClass("red-seed");
                 redPos2 = 61;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("78")) {
+                target.parent().removeClass("red-seed");
                 redPos3 = 61;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("77")) {
+                target.parent().removeClass("red-seed");
                 redPos4 = 61;
+                setSeedOnBoard();
             }
 
             //if seed has 6 and it's at opening position, call out (for yellow seed)
             if (target.parent().hasClass("79")) {
+                target.parent().removeClass("yellow-seed");
                 yellowPos1 = 74;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("80")) {
+                target.parent().removeClass("yellow-seed");
                 yellowPos2 = 74;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("72")) {
+                target.parent().removeClass("yellow-seed");
                 yellowPos3 = 74;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("73")) {
+                target.parent().removeClass("yellow-seed");
                 yellowPos4 = 74;
+                setSeedOnBoard();
             }
 
             //if seed has 6 and it's at opening position, call out (for green seed)
             if (target.parent().hasClass("6")) {
+                target.parent().removeClass("green-seed");
                 greenPos1 = 12;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("7")) {
+                target.parent().removeClass("green-seed");
                 greenPos2 = 12;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("13")) {
+                target.parent().removeClass("green-seed");
                 greenPos3 = 12;
+                setSeedOnBoard();
             } else if (target.parent().hasClass("14")) {
+                target.parent().removeClass("green-seed");
                 greenPos4 = 12;
+                setSeedOnBoard();
             }
 
 
@@ -512,10 +607,10 @@ $(document).ready(function(){
 
             //remove added dice number if the bluepath doesn't exist
             console.log(bluePos3);
-            target.parent().removeClass("blue-seed");
-            target.parent().removeClass("red-seed");
-            target.parent().removeClass("yellow-seed");
-            target.parent().removeClass("green-seed");
+            // target.parent().removeClass("blue-seed");
+            // target.parent().removeClass("red-seed");
+            // target.parent().removeClass("yellow-seed");
+            // target.parent().removeClass("green-seed");
 
             //remove spotter on all seeds after playerTurn
             $("td").each(function (index) {
@@ -523,7 +618,8 @@ $(document).ready(function(){
             });
 
             //call the setseed function to rearrange blue and red seeds on position
-            setSeedOnBoard(bluePlay);
+            
+            //setSeedOnBoard(bluePlay);
         }
     });
 });
