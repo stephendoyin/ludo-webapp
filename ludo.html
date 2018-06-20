@@ -2,6 +2,7 @@
 <html>
 
 <head>
+        <link rel="stylesheet" type="text/css" href="vendor\css\grid.css">
     <link rel="stylesheet" href="ludo.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <style>
@@ -12,9 +13,9 @@
 </head>
 
 <body>
-        <div class="container">
-            <div>
-                    <table>
+    <div class="row">
+        <div class="col span-4-of-6">
+            <table>
                         <tr>
                             <td class="1"></td>
                             <td class="2"></td>
@@ -210,42 +211,46 @@
                             <td class="84"></td>
                             <td class="85"></td>
                         </tr>
-                    </table>
-            </div>
-            <div>
-                <div class="sidebar-container">
-                    <h1 class="ludo-title">LUDO &nbsp;X</h1>
-                    <h3 class="player-heading">Enter Player Name</h3>
-                    <form id="load-player">
-                        <label for="player1Name">Player 1:&nbsp;</label>
-                        <input type='text' placeholder="player 1" id="player1Name">
-                        <br />
-                        <label for="player2Name">Player 2:</label>
-                        <input type='text' placeholder="player 2" id="player2Name">
-                        <input type="submit">
-                    </form>
-                    
-                    <!-- <div>
-                        <div class="user 1">
-                            <img class="avatar">
-                            <p></p>
-                        </div>
-                        <div class="user2">
-                            <img class="avatar" />
-                            <p></p>
-                        </div>
-                    </div> -->
-
-                    <div class="rolldice">
-                        <img src="img/diceface4.jpg" alt="dice" id="dice-face1" width="75px" height="75px">
-                        <div class="btn-dice">
-                            <button id="btn" class="btn">ROLL DICE</button>
-                        </div>
-                    </div>
-                </div>
-                    
-            </div>
+            </table>
         </div>
+        <div class="col span-2-of-6 side-bar">
+            <h1 class="ludo-title"><span class="l">L</span><span class="u">U</span><span class="d">D</span><span class="o">O</span> &nbsp;X</h1>
+            <div>
+                <div class="user1 col span-1-of-2">
+                    <i class="ion-ios-contact icon-big"></i>
+                    
+                    <p>Player 1</p>
+                    <i class="icon1 dropup ion-android-arrow-dropup"></i>
+                </div>
+
+                <div class="user2 col span-1-of-2">
+                        <i class="ion-ios-contact icon-big"></i>
+                        
+                    <p>Player 2</p>
+                    <i class="icon2 ion-android-arrow-dropup"></i>
+                </div>
+            </div>
+
+            <div class="rolldice">
+                <img src="img/diceface4.jpg" alt="dice" id="dice-face1" width="85px" height="85px">
+                <div class="btn-dice">
+                    <button id="btn" class="btn"><!--i class="ion-ios-refresh"></i--> ROLL DICE</button>
+                </div>
+            </div>
+
+            <div class="game-msg">
+                <h5>X LUDO</h5>
+                <p>Player 1 owns the Red and Blue token</p>
+                <p>Player 2 owns the Green and Yellow token
+                </p>
+            </div>
+
+            <button class="btn refresh">REFRESH GAME</button>
+        </div>
+        <footer>Copyright E. Stephen Doyin 2018</footer>
+    </div>                
+
+
 
 
 
