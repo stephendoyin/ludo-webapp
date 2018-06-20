@@ -110,7 +110,6 @@ img[src="img/spotter.gif"]{
     /* margin-top: 10px; */
 }
 
-
 .l{
     color: red;
 }
@@ -125,10 +124,6 @@ img[src="img/spotter.gif"]{
 
 .o{
     color: yellow;
-}
-
-.side-bar{
-
 }
 
 .col{
@@ -158,9 +153,15 @@ img[src="img/spotter.gif"]{
     height: auto;
     margin: 20px;
     color: white;
+    text-align: left;
+    padding: 8px;
     border-radius: 8px;
 }
 
 footer{
     display: none;
+}
+
+#btn{
+    margin-bottom: 47px;
 }
